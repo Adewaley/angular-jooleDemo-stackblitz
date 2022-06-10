@@ -4,6 +4,7 @@ import { User } from '../user';
 import { UserviceService } from '../uservice.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 export class JwtResponse{
@@ -20,11 +21,11 @@ export class AuthService {
 
    private baseUrl = 'http://localhost:8080/springJoole/users/'; 
 
-   constructor(private httpClient:HttpClient, ) { }
+   constructor(private httpClient:HttpClient, private router: Router) { }
 
    signup(user: User): Observable<any>{
       //console.log('In AuthService');
-      return this.httpClient.post(this.baseUrl + 'users/create', user, { headers, responseType: 'text'})
+      return this.httpClient.post(this.baseUrl + 'createUser', user, { headers, responseType: 'text'})
       .pipe(catchError(this.handleError));
    }
 
@@ -44,7 +45,7 @@ export class AuthService {
 
    login(user: string, password: string){
       // console.log('In AuthService -  login');
-      return this.httpClient.post<any>(this.baseUrl + 'login', 
+      return this.httpClient.post<any>(this.baseUrl + 'authenticate', 
         {userName: user, password:password}, {headers})
         .pipe(catchError(this.handleError),
           map(userData => {
@@ -67,6 +68,7 @@ export class AuthService {
 
   logOut() {
     sessionStorage.removeItem('username')
+    this.router.navigate(['/login']);
   }
 
   private handleError(httpError: HttpErrorResponse) {

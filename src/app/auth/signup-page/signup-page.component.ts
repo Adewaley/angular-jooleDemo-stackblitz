@@ -31,21 +31,21 @@ export class SignupPageComponent implements OnInit {
   ngOnInit() {
     this.registrationForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3), ForbiddenNameValidator(/password/)]],
-      password: [''],
-      email: [''],
-    }, { validator: PasswordValidator } as AbstractControlOptions
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      }, { validator: PasswordValidator } as AbstractControlOptions
     );
 
-    this.registrationForm.get('subscribe')?.valueChanges
-      .subscribe(checkedValue => {
-        const email = this.registrationForm.get('email');
-        if (checkedValue) {
-          email?.setValidators(Validators.required);
-        } else {
-          email?.clearValidators();
-        }
-        email?.updateValueAndValidity();
-      });
+    // this.registrationForm.get('subscribe')?.valueChanges
+    //   .subscribe(checkedValue => {
+    //     const email = this.registrationForm.get('email');
+    //     if (checkedValue) {
+    //       email?.setValidators(Validators.required);
+    //     } else {
+    //       email?.clearValidators();
+    //     }
+    //     email?.updateValueAndValidity();
+    //   });
   }
 
   get userName() {
@@ -75,7 +75,7 @@ export class SignupPageComponent implements OnInit {
 }
 
   signUp(){
-    this.http.post<any>("http://localhost:8080/springJoole/users/users/createUser", this.registrationForm.value)
+    this.http.post<any>("http://localhost:8080/springJoole/users/createUser", this.registrationForm.value)
     .subscribe(res=>{
       alert("Account has been created");
       this.registrationForm.reset();
