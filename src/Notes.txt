@@ -1,0 +1,8 @@
+Angular app: One or more modules
+Angular Modules: one or more components + services
+Angular components: HTML Templates + TS classes
+Services: Business Logic(implementations of certain functionalities)
+
+ng g c <component name>
+ng g d <directive name>
+ng g s <Service name>
