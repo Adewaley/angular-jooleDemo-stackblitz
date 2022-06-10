@@ -75,7 +75,7 @@ export class SignupPageComponent implements OnInit {
 }
 
   signUp(){
-    this.http.post<any>("http://localhost:8080/springJoole/users/createUser", this.registrationForm.value)
+    this.http.post<any>("http://localhost:8080/springJoole/users/users/createUser", this.registrationForm.value)
     .subscribe(res=>{
       alert("Account has been created");
       this.registrationForm.reset();

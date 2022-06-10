@@ -23,11 +23,11 @@ export class AppComponent /**implements OnInit */{
      return sessionStorage.getItem("username");
   }
   onLogOut(){
-    this.authService.logout();
+    this.authService.logOut();
   }
 
   loggedIn(){
-    return this.authService.isLoggedIn()
+    return this.authService.isUserLoggedIn()
   }
 
 }

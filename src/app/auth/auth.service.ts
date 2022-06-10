@@ -18,17 +18,15 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 })
 export class AuthService {
 
-   private baseUrl = 'http://localhost:8080/'; 
+   private baseUrl = 'http://localhost:8080/springJoole/users/'; 
 
    constructor(private httpClient:HttpClient, ) { }
 
    signup(user: User): Observable<any>{
       //console.log('In AuthService');
-      return this.httpClient.post(this.baseUrl + 'signup', user, { headers, responseType: 'text'})
-                     .pipe(catchError(this.handleError));
+      return this.httpClient.post(this.baseUrl + 'users/create', user, { headers, responseType: 'text'})
+      .pipe(catchError(this.handleError));
    }
-
-  
 
    // authenticate(username:string, password:string) {
    // return this.httpClient.post<any>('http://localhost:8080/springJoole/authenticate',{username,password}).pipe(
@@ -60,8 +58,6 @@ export class AuthService {
         ); 
     }
 
-
-  
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')

@@ -9,8 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserviceService {
 
-  //private apiServerUrl = environment.apiBaseUrl;
-  body: any;
+  
 
   constructor(private http: HttpClient) { }
 
