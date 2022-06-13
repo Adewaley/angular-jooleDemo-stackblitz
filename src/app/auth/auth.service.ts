@@ -5,6 +5,7 @@ import { UserviceService } from '../uservice.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 
 export class JwtResponse{
@@ -44,9 +45,9 @@ export class AuthService {
    // }
 
    login(user: string, password: string){
-      // console.log('In AuthService -  login');
-      return this.httpClient.post<any>(this.baseUrl + 'authenticate', 
-        {username: user, password:password}, {headers})
+      // console.log('In AuthService -  login');JKSDLHB
+      this.baseUrl = this.baseUrl + 'authenticate' + '?username=' + user + '&password=' + password;
+      return this.httpClient.post<any>(this.baseUrl, {headers})
         .pipe(catchError(this.handleError),
           map(userData => {
             sessionStorage.setItem("username", user);
@@ -56,8 +57,8 @@ export class AuthService {
             sessionStorage.setItem("roles", JSON.stringify(userData.roles));
             return userData;
           })
-        ); 
-    }
+      ); 
+   }
 
 
   isUserLoggedIn() {
