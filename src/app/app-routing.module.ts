@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupPageComponent } from './auth/signup-page/signup-page.component';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'signup', pathMatch:'full' },
   {path: 'signup', component:SignupPageComponent },
   {path: 'login', component:LoginPageComponent },
+  {path: 'home', component:HomePageComponent },
 ]
 
 @NgModule({

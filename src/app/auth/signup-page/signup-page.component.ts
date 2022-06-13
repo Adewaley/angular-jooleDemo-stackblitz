@@ -17,6 +17,7 @@ import { AuthService } from "../auth.service";
 export class SignupPageComponent implements OnInit {
 
   registrationForm!: FormGroup;
+  
   user = new User('', '', '');
     isRegistered = false;
     submitted = false;
@@ -30,7 +31,7 @@ export class SignupPageComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.minLength(3), ForbiddenNameValidator(/password/)]],
+      name: ['', [Validators.required, Validators.minLength(3), ForbiddenNameValidator(/password/)]],
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
       }, { validator: PasswordValidator } as AbstractControlOptions
@@ -49,7 +50,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   get userName() {
-    return this.registrationForm.get('userName');
+    return this.registrationForm.get('name');
   }
 
   get email() {
@@ -66,7 +67,7 @@ export class SignupPageComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-    this.user.userName = this.registrationForm.value.userName;
+    this.user.name = this.registrationForm.value.userName;
     this.user.email = this.registrationForm.value.email;
     this.user.password = this.registrationForm.value.password;
     //console.log(this.getSelectedRoles());
@@ -96,6 +97,6 @@ export class SignupPageComponent implements OnInit {
         this.errorMessage = error;
         this.isRegistered = false;
     });
-}
+  }
 
 }

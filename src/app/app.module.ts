@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -15,7 +16,8 @@ import { LoginPageComponent } from './auth/login-page/login-page.component';
   declarations: [
     AppComponent,
     SignupPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    HomePageComponent
     
   ],
   imports: [

@@ -10,7 +10,7 @@
           <form [formGroup]="registrationForm" (ngSubmit)="signUp()">
             <div class="form-group">
               <label for="userName">Username</label>
-              <input formControlName="userName" type="text" formControlName="userName" [class.is-invalid]="userName?.invalid && userName?.touched"
+              <input formControlName="name" type="text"  [class.is-invalid]="userName?.invalid && userName?.touched"
               class="form-control">
               <small class="text-danger" [class.d-none]="userName?.valid || userName?.untouched">Username is required</small>
             </div>
