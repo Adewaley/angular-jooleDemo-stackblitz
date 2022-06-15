@@ -30,39 +30,45 @@ export class LoginPageComponent implements OnInit {
     })
   }
 
-  login(){
-    this.http.get<any>("http://localhost:8080/springJoole/users/all")
-    .subscribe(res=>{
-      const user = res.find((a:any)=>{
-        return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password       
-      });
-      if (user){
-        alert("Login Succes");
-        this.loginForm.reset();
-        this.router.navigate(['home'])
-      }else{
-        alert("User not found");
-      }
-    },err=>{
-      alert("something went wrong");
+  // login(){
+  //   this.http.get<any>("http://localhost:8080/springJoole/users/all")
+  //   .subscribe(res=>{
+  //     const user = res.find((a:any)=>{
+  //       return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password       
+  //     });
+  //     if (user){
+  //       alert("Login Succes");
+  //       this.loginForm.reset();
+  //       this.router.navigate(['home'])
+  //     }else{
+  //       alert("User not found");
+  //     }
+  //   },err=>{
+  //     alert("something went wrong");
     
-    })
-  }
+  //   })
+  // }
 
   onSubmit(){
     this.submitted = true;
-    this.authService.login(this.loginForm.value.userName, this.loginForm.value.password).subscribe(
-        data=>{
-            this.isLoggedin = true
-            this.router.navigate(['home']);
-        },
-        error=>{
-            console.log(error);
-            this.errorMessage = error;
-            this.isLoggedin = false;
-            this.isLoginFailed = true;
-        }
-    );
+  //   this.authService.login(this.loginForm.value.userName, this.loginForm.value.password).subscribe(
+  //       data=>{
+  //           this.isLoggedin = true
+  //           this.router.navigate(['home']);
+  //       },
+  //       error=>{
+  //           console.log(error);
+  //           this.errorMessage = error;
+  //           this.isLoggedin = false;
+  //           this.isLoginFailed = true;
+  //       }
+  //   );
+  // }
+  this.authService.login(this.loginForm.value.userName, this.loginForm.value.password).subscribe(response => {
+    console.log(response.token)
+    sessionStorage.setItem("token", response.token);
+    this.router.navigate(['home'])
+  })
   }
 
 }

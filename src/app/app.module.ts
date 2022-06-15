@@ -9,7 +9,19 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { SearchComponent } from './search/search.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSliderModule } from '@angular/material/slider';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { ProductListComponent } from './product-list/product-list.component';
 
+
+
+registerLocaleData(en);
 
 
 @NgModule({
@@ -17,7 +29,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     AppComponent,
     SignupPageComponent,
     LoginPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    SearchComponent,
+    ProductListComponent
     
   ],
   imports: [
@@ -26,8 +40,12 @@ import { HomePageComponent } from './home-page/home-page.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    AppRoutingModule
-    
+    AppRoutingModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    NzButtonModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

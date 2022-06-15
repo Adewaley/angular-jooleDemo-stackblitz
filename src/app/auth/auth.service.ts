@@ -44,20 +44,52 @@ export class AuthService {
    // );
    // }
 
+   // login(user: string, password: string){
+   //    // console.log('In AuthService -  login');JKSDLHB
+   //    this.baseUrl = this.baseUrl + 'authenticate' + '?username=' + user + '&password=' + password;
+   //    return this.httpClient.post<any>(this.baseUrl, {headers})
+   //      .pipe(catchError(this.handleError),
+   //        map(userData => {
+   //          sessionStorage.setItem("username", user);
+   //          let tokenStr = "Bearer " + userData.token;
+   //          console.log("Token---  " + tokenStr);
+   //          sessionStorage.setItem("token", tokenStr);
+   //          sessionStorage.setItem("roles", JSON.stringify(userData.roles));
+   //          return userData;
+   //        })
+   //    ); 
+   // }
+
+   // login(user: string, password: string){
+   //    // console.log('In AuthService -  login');
+   //    return this.httpClient.post<any>(this.baseUrl + 'authenticate', 
+   //      {name: user, password:password}, {headers})
+   //      .pipe(catchError(this.handleError),
+   //        map(userData => {
+   //          sessionStorage.setItem("username", user);
+   //          let tokenStr = "Bearer " + userData.token;
+   //          console.log("Token---  " + tokenStr);
+   //          sessionStorage.setItem("token", tokenStr);
+   //          sessionStorage.setItem("roles", JSON.stringify(userData.roles));
+   //          return userData;
+   //       })
+   //    ); 
+   // }
+
    login(user: string, password: string){
-      // console.log('In AuthService -  login');JKSDLHB
-      this.baseUrl = this.baseUrl + 'authenticate' + '?username=' + user + '&password=' + password;
-      return this.httpClient.post<any>(this.baseUrl, {headers})
-        .pipe(catchError(this.handleError),
-          map(userData => {
-            sessionStorage.setItem("username", user);
-            let tokenStr = "Bearer " + userData.token;
-            console.log("Token---  " + tokenStr);
-            sessionStorage.setItem("token", tokenStr);
-            sessionStorage.setItem("roles", JSON.stringify(userData.roles));
-            return userData;
-          })
-      ); 
+      // console.log('In AuthService -  login');
+      return this.httpClient.post<any>(this.baseUrl + 'authenticate', 
+        {name: user, password:password}, { headers: headers, })
+      //   .pipe(catchError(this.handleError),
+      //     map(userData => {
+      //       sessionStorage.setItem("username", user);
+      //       let tokenStr = "Bearer " + userData.token;
+      //       console.log("Token---  " + tokenStr);
+      //       sessionStorage.setItem("token", tokenStr);
+      //       sessionStorage.setItem("roles", JSON.stringify(userData.roles));
+      //       return userData;
+      //    })
+      //); 
    }
 
 

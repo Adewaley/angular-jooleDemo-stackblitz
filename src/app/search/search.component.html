@@ -1,0 +1,42 @@
+
+<form class="form-inline" (submit)="onSubmit()">
+   <div class="form-group">
+       <select name="categ" class="form-control">
+       <option>--</option>
+       <option *ngFor="let categ of categs" [value]="categ">{{categ}}</option>
+       </select>
+   </div>
+   
+   <div class="form-group">
+       <!-- <input list="SubCategs" name="subCateg" class="form-control"/>
+       <datalist id="SubCategs" name="subCategList">
+         <option *ngFor="let subcateg of subCategs" [value]="subcateg">{{subcateg}}</option>
+       </datalist> -->
+       
+       <button nz-button nzType="primary" type="submit" class="btn" routerLink = "../productlist"><span class="glyphicon glyphicon-search">search</span></button>
+      
+   </div>
+
+</form>
+
+<form class="example-form">
+   <mat-form-field class="example-full-width" appearance="fill">
+     <mat-label>Number</mat-label>
+     <input type="text"
+            placeholder="Pick one"
+            aria-label="Number"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
+     <mat-autocomplete #auto="matAutocomplete">
+       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+         {{option}}
+       </mat-option>
+     </mat-autocomplete>
+   </mat-form-field>
+ </form>
+
+
+
+
+   

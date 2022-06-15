@@ -16,6 +16,7 @@ export class AppComponent /**implements OnInit */{
   constructor(private authService: AuthService){}
   //isLoggedIn = false;
   userName: string = '';
+  categs: string[] = ['Mechanical', 'Automatic'];
   
   ngOnInit(): void {
     //this.isLoggedIn = this.authService.isLoggedIn();
